@@ -1,5 +1,4 @@
 import Slides from './Slides';
+import renderComponentById from '../../utils/renderComponentById';
 
-export {
-  Slides,
-};
+renderComponentById('slides', Slides);

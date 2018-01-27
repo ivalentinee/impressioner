@@ -1,5 +1,5 @@
 import ControlPanel from './ControlPanel';
+import renderComponentById from '../../utils/renderComponentById';
+import model from '../../models/ControlPanel';
 
-export {
-  ControlPanel,
-};
+renderComponentById('control_panel', ControlPanel, { model });

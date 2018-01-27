@@ -14,6 +14,7 @@
     "react",
   ],
   "plugins": [
+    "transform-decorators-legacy",
     "transform-object-rest-spread",
     ["transform-runtime", {
       "polyfill": false,
@@ -21,7 +22,7 @@
     [
       "transform-class-properties",
       {
-        "spec": true
+        "spec": false
       }
     ]
   ]
