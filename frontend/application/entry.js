@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-
 import 'phoenix_html';
+import renderComponentById from './utils/renderComponentById';
+import { Slides } from './components/Slides';
 
-console.log('something happens here!');
+renderComponentById('slides', Slides);

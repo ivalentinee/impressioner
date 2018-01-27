@@ -11,7 +11,8 @@
   </head>
 
   <body>
-    <script src="<%= static_path(@conn, "/assets/app.js") %>"></script>
     <link rel="stylesheet" href="<%= static_path(@conn, "/assets/app.css") %>">
+    <%= render @view_module, @view_template, assigns %>
+    <script src="<%= static_path(@conn, "/assets/app.js") %>"></script>
   </body>
 </html>
