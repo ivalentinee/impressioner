@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    ports:
+      - "4000:4000"
+    volumes: &web-volumes
+      - ./:/app
+      - ~/.bash_history:/root/.bash_history
+      - /priv/static/
+    command: bash -c "mix phx.server"
