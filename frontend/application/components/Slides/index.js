@@ -1,5 +1,5 @@
 import Slides from './Slides';
+import renderComponentById from '../../utils/renderComponentById';
+import model from '../../models/Slides';
 
-export {
-  Slides,
-};
+renderComponentById('slides', Slides, { model });
