@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 
 import 'phoenix_html';
+import './styles';
 import renderComponentById from './utils/renderComponentById';
 import { Slides } from './components/Slides';
 import { ControlPanel } from './components/ControlPanel';
