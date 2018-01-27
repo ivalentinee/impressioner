@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
-import { onShowSlide } from '../../channels/controlChannel';
+import PropTypes from 'prop-types';
+import { observer } from 'mobx-react';
 import style from './Slides.css';
 
+@observer
 class Slides extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      slide: null,
-    };
-  }
-
-  componentDidMount = () => {
-    onShowSlide(slide => this.setState({
-      slide,
-    }));
-  }
-
   render = () => {
-    const { slide } = this.state;
+    const { slide } = this.props.model;
 
     if (!slide) {
       return <div className={style.container}>Not started yet...</div>;
@@ -30,5 +19,11 @@ class Slides extends Component {
     );
   }
 }
+
+Slides.propTypes = {
+  model: PropTypes.shape({
+    slide: PropTypes.string,
+  }),
+};
 
 export default Slides;
