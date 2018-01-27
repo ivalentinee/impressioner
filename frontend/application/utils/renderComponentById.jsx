@@ -6,6 +6,6 @@ export default (elementId, Component) => {
     const element = document.getElementById(elementId);
     if (element) {
       ReactDOM.render(<Component />, element);
-    };
+    }
   });
-}
+};
