@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
-import socket from '../../utils/socket';
+import { onShowSlide } from '../../channels/controlChannel';
 
 class Slides extends Component {
-  componentDidMount = () => {
-    const channel = socket.channel('data', {});
-    channel.join()
-      .receive('ok', resp => console.log('Joined successfully', resp));
-    channel.push('get slides')
-      .receive('ok', msg => console.log('created message', msg));
+  constructor(props) {
+    super(props);
+    this.state = {
+      slide: null,
+    };
   }
 
-  render = () => <div>Slides should be here!</div>
+  componentDidMount = () => {
+    onShowSlide(slide => this.setState({
+      slide,
+    }));
+  }
+
+  render = () => {
+    const { slide } = this.state;
+
+    if (!slide) {
+      return <div>Not started yet...</div>;
+    }
+
+    return (
+      <div>
+        <img alt="slide" src={slide} />
+      </div>
+    );
+  }
 }
 
 export default Slides;

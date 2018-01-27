@@ -1,7 +1,8 @@
 defmodule ImpressionerWeb.SlidesSocket do
   use Phoenix.Socket
 
-  channel "data", ImpressionerWeb.DataChannel
+  channel("control", ImpressionerWeb.ControlChannel)
+  channel("data", ImpressionerWeb.DataChannel)
 
   transport(:websocket, Phoenix.Transports.WebSocket)
 
