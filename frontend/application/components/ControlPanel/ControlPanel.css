@@ -47,7 +47,7 @@
   font-size: 1.5em;
 }
 
-.buttons {
+.controlButtons {
   display: flex;
   flex-direction: row;
   height: 70%;
@@ -55,6 +55,19 @@
 }
 
 .button {
+  font-size: 10em;
+  background-color: black;
+  color: white;
+  shadow: none;
+  box-shadow: none;
+  border: none;
+}
+
+.controlButtons button {
   height: 100%;
   width: 50%;
+}
+
+.button:hover {
+  color: cyan;
 }

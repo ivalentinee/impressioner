@@ -75,8 +75,8 @@ class ControlPanel extends Component {
     if (currentSlideIndex === null) {
       return (
         <div className={style.container}>
-          <button onClick={this.showFirstSlide}>Start</button>
-          <p>{slideCount} slides available</p>
+          <button className={style.button} onClick={this.showFirstSlide}>Start</button>
+          <div className={style.status}>{slideCount} slides available</div>
         </div>
       );
     }
@@ -88,20 +88,20 @@ class ControlPanel extends Component {
           <div className={style.status}>
             Current slide: {currentSlideIndex + 1}/{slideCount}
           </div>
-          <div className={style.buttons}>
+          <div className={style.controlButtons}>
             <button
               className={style.button}
               disabled={!this.canShowPrevSlide()}
               onClick={this.showPrevSlide}
             >
-              Prev
+              &lt;
             </button>
             <button
               className={style.button}
               disabled={!this.canShowNextSlide()}
               onClick={this.showNextSlide}
             >
-              Next
+              &gt;
             </button>
           </div>
         </div>
