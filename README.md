@@ -17,7 +17,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Roadmap (may change)
 
-- MobX
+- ~MobX~
 - Usage in "README"
 - "Next slide preview"
 - Improved controls
