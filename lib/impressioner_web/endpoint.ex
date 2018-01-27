@@ -1,7 +1,7 @@
 defmodule ImpressionerWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :impressioner
 
-  socket("/socket", ImpressionerWeb.UserSocket)
+  socket("/socket", ImpressionerWeb.SlidesSocket)
 
   # Serve at "/" the static files from "priv/static" directory.
   #
