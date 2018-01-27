@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { onShowSlide } from '../../channels/controlChannel';
-import style from './Slides.css'
+import style from './Slides.css';
 
 class Slides extends Component {
   constructor(props) {
