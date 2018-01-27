@@ -3,10 +3,20 @@ version: "3"
 services:
   web:
     build: .
+    image: impressioner/web
     ports:
       - "4000:4000"
     volumes: &web-volumes
       - ./:/app
-      - ~/.bash_history:/root/.bash_history
       - /priv/static/
-    command: bash -c "mix phx.server"
+    environment: &web-environment
+      MIX_ENV: null
+      NODE_ENV: development
+      POSTGRESQL_HOST: db
+
+  webpack:
+    build: .
+    image: impressioner/web
+    volumes: *web-volumes
+    command: npm run watch
+    environment: *web-environment

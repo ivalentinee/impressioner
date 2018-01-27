@@ -4,6 +4,7 @@
 
     $ docker-compose build
     $ docker-compose run --rm web mix deps.get
+    $ docker-compose run --rm web yarn -s --frozen-lockfile --non-interactive
     $ docker-compose up -d
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
