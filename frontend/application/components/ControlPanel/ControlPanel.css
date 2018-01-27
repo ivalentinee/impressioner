@@ -68,6 +68,6 @@
   width: 50%;
 }
 
-.button:hover {
-  color: cyan;
+.button:disabled {
+  color: #222222;
 }
