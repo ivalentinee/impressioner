@@ -14,3 +14,12 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
     $ docker-compose start
     $ docker-compose restart
     $ docker-compose stop
+
+## Roadmap (may change)
+
+- MobX
+- Usage in "README"
+- "Next slide preview"
+- Improved controls
+- Keep current state (aka "Sessions")
+- Authentication
