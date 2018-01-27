@@ -6,7 +6,7 @@ defmodule ImpressionerWeb.DataChannel do
   end
 
   def handle_in("get slides", _, socket) do
-    slides = Impressioner.SlideList.list
+    slides = Impressioner.SlideList.list()
     {:reply, {:ok, %{slides: slides}}, socket}
   end
 end

@@ -7,7 +7,7 @@ defmodule Impressioner.SlideList do
     with {:ok, file_list} <- File.ls(slides_full_path()) do
       file_list
       |> Enum.filter(&matches_file_name_regex?/1)
-      |> Enum.sort
+      |> Enum.sort()
       |> Enum.map(&slide_url/1)
     else
       _ -> []
@@ -21,7 +21,6 @@ defmodule Impressioner.SlideList do
   def slide_url(file_name) do
     "#{@slides_base_url}/#{file_name}"
   end
-
 
   def slides_full_path do
     Application.app_dir(:impressioner) |> Path.join(@slides_fs_path)

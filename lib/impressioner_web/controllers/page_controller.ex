@@ -1,7 +1,11 @@
 defmodule ImpressionerWeb.PageController do
   use ImpressionerWeb, :controller
 
-  def index(conn, _params) do
-    render(conn, "index.html")
+  def slides(conn, _params) do
+    render(conn, "slides.html")
+  end
+
+  def control_panel(conn, _params) do
+    render(conn, "control_panel.html")
   end
 end

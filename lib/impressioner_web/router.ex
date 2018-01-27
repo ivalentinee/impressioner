@@ -15,7 +15,8 @@ defmodule ImpressionerWeb.Router do
 
   scope "/", ImpressionerWeb do
     pipe_through(:browser)
-    get("/", PageController, :index)
+    get("/", PageController, :slides)
+    get("/panel", PageController, :control_panel)
   end
 
   # Other scopes may use custom stacks.
