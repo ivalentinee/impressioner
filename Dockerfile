@@ -14,6 +14,8 @@ RUN curl --silent --location https://deb.nodesource.com/setup_8.x | bash - && \
 RUN mkdir /app
 WORKDIR /app
 
+ENV MIX_ENV=prod NODE_ENV=production
+
 # hex deps
 COPY mix.exs mix.lock /app/
 RUN mix local.hex --force && \
@@ -21,11 +23,16 @@ RUN mix local.hex --force && \
     mix local.rebar --force
 
 # node packages
-# COPY package.json yarn.lock /app/
-# RUN yarn install -s --frozen-lockfile --non-interactive
+COPY package.json yarn.lock /app/
+RUN yarn install -s --frozen-lockfile --non-interactive
 
 EXPOSE 4000
 
 ADD . /app
 
-CMD bash -c "mix ecto.create && mix ecto.migrate && mix phoenix.server"
+# build application
+RUN mix compile && \
+    npm run build && \
+    mix phx.digest
+
+CMD bash -c "mix phoenix.server"
