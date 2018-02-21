@@ -8,10 +8,8 @@ defmodule Impressioner.Application do
 
     # Define workers and child supervisors to be supervised
     children = [
-      # Start the endpoint when the application starts
-      supervisor(ImpressionerWeb.Endpoint, [])
-      # Start your own worker by calling: Impressioner.Worker.start_link(arg1, arg2, arg3)
-      # worker(Impressioner.Worker, [arg1, arg2, arg3]),
+      supervisor(ImpressionerWeb.Endpoint, []),
+      worker(Impressioner.SlideSession, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
