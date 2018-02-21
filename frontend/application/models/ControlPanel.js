@@ -15,36 +15,42 @@ class ControlPanel {
   }
 
   @computed get slideCount() { return this.slides.length; }
-  @computed get currentSlideIndex() { return this.slides.findIndex(slide => slide == this.currentSlide); }
+  @computed get currentSlideIndex() {
+    return this.slides.findIndex(slide => slide === this.currentSlide);
+  }
   @computed get canShowPrevSlide() { return this.currentSlideIndex > 0; }
   @computed get canShowNextSlide() { return this.currentSlideIndex + 1 < this.slides.length; }
 
   @action showFirstSlide = () => {
-    this.currentSlide = this.slides[0];
+    [this.currentSlide] = this.slides;
   }
 
   @action showPrevSlide = () => {
     if (this.canShowPrevSlide) {
       const prevSlide = this.slides[this.currentSlideIndex - 1];
       showSlide(prevSlide);
-    };
+    }
   }
 
   @action showNextSlide = () => {
     if (this.canShowNextSlide) {
       const nextSlide = this.slides[this.currentSlideIndex + 1];
       showSlide(nextSlide);
-    };
+    }
   }
 
   @action setSlide = (slide) => {
-    this.currentSlide = slide;
+    if (this.currentSlide !== slide) { this.currentSlide = slide; }
+  }
+
+  @action reset = () => {
+    showSlide(null);
   }
 }
 
 const model = new ControlPanel();
 
 getSlides((data) => { model.slides = data.slides; });
-onShowSlide(slide => model.setSlide(slide))
+onShowSlide(slide => model.setSlide(slide));
 
 export default model;

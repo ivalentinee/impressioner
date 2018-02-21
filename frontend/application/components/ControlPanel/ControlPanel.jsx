@@ -5,6 +5,12 @@ import style from './ControlPanel.css';
 
 @observer
 class ControlPanel extends Component {
+  reset = (e) => {
+    e.preventDefault();
+    const { reset } = this.props.model;
+    reset();
+  }
+
   renderPreview = () => {
     const { currentSlide } = this.props.model;
 
@@ -41,6 +47,7 @@ class ControlPanel extends Component {
         <div className={style.controls}>
           <div className={style.status}>
             Current slide: {currentSlideIndex + 1}/{slideCount}
+            <button className={style.reset} onClick={this.reset}>Reset</button>
           </div>
           <div className={style.controlButtons}>
             <button
@@ -72,6 +79,7 @@ ControlPanel.propTypes = {
     showFirstSlide: PropTypes.func.isRequired,
     showPrevSlide: PropTypes.func.isRequired,
     showNextSlide: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired,
     canShowPrevSlide: PropTypes.bool.isRequired,
     canShowNextSlide: PropTypes.bool.isRequired,
   }),
