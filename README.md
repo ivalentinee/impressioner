@@ -45,8 +45,9 @@ $ docker-compose run --rm web npm run eslint
 ## Roadmap (may change)
 
 - ~MobX~
+- CI
 - Usage in "README"
 - "Next slide preview"
 - Improved controls
-- Keep current state (aka "Sessions")
+- ~Keep current state (aka "Sessions")~
 - Authentication
