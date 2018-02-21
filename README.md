@@ -1,4 +1,5 @@
 # Impressioner
+[![Build Status](https://travis-ci.org/vemperor/impressioner.svg?branch=master)](https://travis-ci.org/vemperor/impressioner)
 
 ## Setup your Phoenix app:
 ```sh
