@@ -37,7 +37,10 @@ defmodule Impressioner.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:basic_auth,
+       git: "https://github.com/vemperor/basic_auth",
+       branch: "feature/skip_authentication_if_no_credentials_provided"}
     ]
   end
 end

@@ -35,4 +35,4 @@ RUN mix compile && \
     npm run build && \
     mix phx.digest
 
-CMD bash -c "mix phoenix.server"
+CMD bash -c "mix phx.server"

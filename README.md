@@ -48,8 +48,8 @@ $ docker-compose run --rm web npm run eslint
 - ~[MobX](https://mobx.js.org/)~
 - ~Keep current state (aka "Sessions")~
 - ~CI~
-- Authentication
-- [flow](https://flow.org/)
+- ~Authentication~
+- [flow](https://flow.org/) | [typescript](https://www.typescriptlang.org/) | [reason](https://reasonml.github.io/)
 - Keyboard navigation
 - Usage in "README"
 - "Next slide preview"
