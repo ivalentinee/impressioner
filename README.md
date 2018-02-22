@@ -46,7 +46,7 @@ $ docker-compose run --rm web npm run eslint
 ## Roadmap (may change)
 
 - ~MobX~
-- CI
+- ~CI~
 - Usage in "README"
 - "Next slide preview"
 - Improved controls
