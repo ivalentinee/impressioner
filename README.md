@@ -1,6 +1,8 @@
 # Impressioner
 [![Build Status](https://travis-ci.org/vemperor/impressioner.svg?branch=master)](https://travis-ci.org/vemperor/impressioner)
 
+[Usage](USAGE.md)
+
 ## Setup your Phoenix app:
 ```sh
 $ docker-compose build
@@ -51,6 +53,6 @@ $ docker-compose run --rm web npm run eslint
 - ~Authentication~
 - [flow](https://flow.org/) | [typescript](https://www.typescriptlang.org/) | [reason](https://reasonml.github.io/)
 - ~Keyboard navigation~
-- Usage in "README"
+- ~Usage in "README"~
 - "Next slide preview"
 - Improved controls
