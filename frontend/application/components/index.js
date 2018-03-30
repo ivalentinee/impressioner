@@ -1,2 +1,0 @@
-import './ControlPanel';
-import './Slides';
