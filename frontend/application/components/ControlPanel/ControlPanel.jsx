@@ -24,7 +24,7 @@ class ControlPanel extends Component {
   render = () => {
     const {
       currentSlideIndex, slideCount, currentSlide,
-      showFirstSlide, showPrevSlide, showNextSlide,
+      start, showPrevSlide, showNextSlide,
       canShowPrevSlide, canShowNextSlide,
     } = this.props.model;
 
@@ -35,7 +35,7 @@ class ControlPanel extends Component {
     if (!currentSlide) {
       return (
         <div className={style.container}>
-          <button className={style.button} onClick={showFirstSlide}>Start</button>
+          <button className={style.button} onClick={start}>Start</button>
           <div className={style.status}>{slideCount} slides available</div>
         </div>
       );
@@ -76,7 +76,7 @@ ControlPanel.propTypes = {
     currentSlide: PropTypes.string,
     currentSlideIndex: PropTypes.number,
     slideCount: PropTypes.number.isRequired,
-    showFirstSlide: PropTypes.func.isRequired,
+    start: PropTypes.func.isRequired,
     showPrevSlide: PropTypes.func.isRequired,
     showNextSlide: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,

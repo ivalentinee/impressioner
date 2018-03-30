@@ -1,1 +1,3 @@
+<link rel="stylesheet" href="<%= static_path(@conn, "/assets/control-panel.css") %>">
+<script src="<%= static_path(@conn, "/assets/control-panel.js") %>"></script>
 <div id="control_panel"></div>

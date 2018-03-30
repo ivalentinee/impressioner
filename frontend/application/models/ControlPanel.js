@@ -1,6 +1,7 @@
 import { observable, computed, action, autorun } from 'mobx';
 import { getSlides } from '../channels/dataChannel';
 import { showSlide, onShowSlide } from '../channels/controlChannel';
+import setKeyPressHandlers from './ControlPanel/setKeypressHandlers';
 
 class ControlPanel {
   @observable slides = [];
@@ -21,8 +22,10 @@ class ControlPanel {
   @computed get canShowPrevSlide() { return this.currentSlideIndex > 0; }
   @computed get canShowNextSlide() { return this.currentSlideIndex + 1 < this.slides.length; }
 
-  @action showFirstSlide = () => {
-    [this.currentSlide] = this.slides;
+  @action start = () => {
+    if (!this.currentSlide) {
+      [this.currentSlide] = this.slides;
+    }
   }
 
   @action showPrevSlide = () => {
@@ -52,5 +55,6 @@ const model = new ControlPanel();
 
 getSlides((data) => { model.slides = data.slides; });
 onShowSlide(slide => model.setSlide(slide));
+setKeyPressHandlers(model);
 
 export default model;

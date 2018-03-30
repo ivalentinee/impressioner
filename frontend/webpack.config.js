@@ -1,10 +1,13 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: ['babel-polyfill', './frontend/application/entry.js'],
+  entry: {
+    slides: ['babel-polyfill', './frontend/application/slides.js'],
+    'control-panel': ['babel-polyfill', './frontend/application/controlPanel.js'],
+  },
   output: {
     path: `${__dirname}/../priv/static/assets`,
-    filename: 'app.js',
+    filename: '[name].js',
   },
   devtool: 'source-map',
   resolve: {
@@ -45,6 +48,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin('app.css'),
+    new ExtractTextPlugin('[name].css'),
   ],
 };

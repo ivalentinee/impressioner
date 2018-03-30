@@ -16,6 +16,7 @@ use Mix.Config
 config :impressioner, ImpressionerWeb.Endpoint,
   load_from_system_env: true,
   url: [host: "example.com", port: 80],
+  check_origin: false,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production

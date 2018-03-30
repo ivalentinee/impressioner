@@ -13,6 +13,18 @@ config :impressioner, ImpressionerWeb.Endpoint,
   pubsub: [name: Impressioner.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :impressioner, :slides_auth,
+  username: {:system, "SLIDES_USERNAME"},
+  password: {:system, "SLIDES_PASSWORD"},
+  realm: "slides",
+  skip_if_no_credentials_configured: true
+
+config :impressioner, :control_panel_auth,
+  username: {:system, "PANEL_USERNAME"},
+  password: {:system, "PANEL_PASSWORD"},
+  realm: "control_panel",
+  skip_if_no_credentials_configured: true
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
