@@ -50,7 +50,7 @@ $ docker-compose run --rm web npm run eslint
 - ~CI~
 - ~Authentication~
 - [flow](https://flow.org/) | [typescript](https://www.typescriptlang.org/) | [reason](https://reasonml.github.io/)
-- Keyboard navigation
+- ~Keyboard navigation~
 - Usage in "README"
 - "Next slide preview"
 - Improved controls
