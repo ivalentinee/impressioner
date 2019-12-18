@@ -1,3 +1,4 @@
 [
-  inputs: [".formatter.exs", "mix.exs", "lib/**/*.{ex,exs}", "test/**/*.{ex,exs}"]
+  import_deps: [:phoenix],
+  inputs: ["*.{ex,exs}", "{config,lib,test}/**/*.{ex,exs}"]
 ]

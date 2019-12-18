@@ -1,3 +1,0 @@
-<link rel="stylesheet" href="<%= static_path(@conn, "/assets/slides.css") %>">
-<script src="<%= static_path(@conn, "/assets/slides.js") %>"></script>
-<div id="slides"></div>

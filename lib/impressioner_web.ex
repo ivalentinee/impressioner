@@ -20,9 +20,11 @@ defmodule ImpressionerWeb do
   def controller do
     quote do
       use Phoenix.Controller, namespace: ImpressionerWeb
+
       import Plug.Conn
-      import ImpressionerWeb.Router.Helpers
       import ImpressionerWeb.Gettext
+      import Phoenix.LiveView.Controller
+      alias ImpressionerWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -33,14 +35,15 @@ defmodule ImpressionerWeb do
         namespace: ImpressionerWeb
 
       # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+      import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import ImpressionerWeb.Router.Helpers
       import ImpressionerWeb.ErrorHelpers
       import ImpressionerWeb.Gettext
+      import Phoenix.LiveView, only: [live_render: 2, live_render: 3]
+      alias ImpressionerWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -49,6 +52,7 @@ defmodule ImpressionerWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 
