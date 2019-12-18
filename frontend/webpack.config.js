@@ -1,53 +1,41 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const glob = require('glob');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = {
+module.exports = (env, options) => ({
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({ cache: true, parallel: true, sourceMap: false }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
   entry: {
-    slides: ['babel-polyfill', './frontend/application/slides.js'],
-    'control-panel': ['babel-polyfill', './frontend/application/controlPanel.js'],
+    './slides': ['./js/slides.js'],
+    './panel': ['./js/panel.js']
   },
   output: {
-    path: `${__dirname}/../priv/static/assets`,
-    filename: '[name].js',
-  },
-  devtool: 'source-map',
-  resolve: {
-    extensions: ['.js', '.jsx'],
+    filename: 'static/js/[name].js',
+    path: path.resolve(__dirname, '../priv/')
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                localIdentName: '[path][name]__[local]--[hash:base64:5]',
-              },
-            },
-            { loader: 'postcss-loader' },
-          ],
-        }),
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            publicPath: '/assets/',
-          },
-        }],
-      },
-    ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      }
+    ]
   },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
-  ],
-};
+    new MiniCssExtractPlugin({ filename: 'static/css/[name].css' })
+  ]
+});

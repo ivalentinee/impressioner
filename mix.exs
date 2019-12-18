@@ -1,11 +1,11 @@
-defmodule Impressioner.Mixfile do
+defmodule Impressioner.MixProject do
   use Mix.Project
 
   def project do
     [
       app: :impressioner,
-      version: "0.0.1",
-      elixir: "~> 1.4",
+      version: "0.1.0",
+      elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -32,15 +32,15 @@ defmodule Impressioner.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.3.0"},
-      {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_html, "~> 2.10"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:phoenix, "~> 1.4.11"},
+      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix_html, "~> 2.11"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"},
-      {:basic_auth,
-       git: "https://github.com/vemperor/basic_auth",
-       branch: "feature/skip_authentication_if_no_credentials_provided"}
+      {:jason, "~> 1.0"},
+      {:plug_cowboy, "~> 2.0"},
+      {:phoenix_live_view, "~> 0.3.0"},
+      {:floki, ">= 0.0.0", only: :test}
     ]
   end
 end
