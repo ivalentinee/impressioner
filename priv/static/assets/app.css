@@ -1,3 +1,19 @@
 .selected-task {
   color: blue;
 }
+
+.task-text {
+  white-space: pre-wrap;
+}
+
+.task-hint {
+  color: grey;
+}
+
+.user-ready {
+  color: green;
+}
+
+.user-not-ready {
+  color: red;
+}

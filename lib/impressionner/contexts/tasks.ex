@@ -1,8 +1,18 @@
 defmodule Impressionner.Contexts.Tasks do
   alias Impressionner.Storage.Tasks, as: TaskStorage
+  alias Impressionner.Contexts.Users
 
   def all do
     TaskStorage.get()
+  end
+
+  def current do
+    %{ sections: sections, current_task: current_task } = TaskStorage.get()
+
+    if current_task do
+      section = Enum.find(sections, &(&1.name == current_task.section))
+      Enum.find(section.tasks, &(&1.name == current_task.task))
+    end
   end
 
   def start do
@@ -10,18 +20,16 @@ defmodule Impressionner.Contexts.Tasks do
     first_section = List.first(sections)
     first_task = List.first(first_section.tasks)
 
-    IO.inspect(sections)
-
     current_task = %{ section: first_section.name, task: first_task.name }
-
     TaskStorage.set(%{ sections: sections, current_task: current_task })
+
+    Users.reset_all_users()
 
     broadcast_event("started")
   end
 
   def next do
     %{ sections: sections, current_task: current_task } = TaskStorage.get()
-    IO.inspect(sections)
     current_section_index = Enum.find_index(sections, &(&1.name === current_task.section))
     current_section = Enum.at(sections, current_section_index)
     current_task_index = Enum.find_index(current_section.tasks, &(&1.name === current_task.task))
@@ -40,6 +48,8 @@ defmodule Impressionner.Contexts.Tasks do
         new_current_task = %{ section: current_section.name, task: next_task_name.name }
         TaskStorage.set(%{ sections: sections, current_task: new_current_task })
     end
+
+    Users.reset_all_users()
 
     broadcast_event("next")
   end

@@ -25,6 +25,18 @@ defmodule Impressionner.Storage.Users do
     end
   end
 
+  def update_all(users) do
+    :ets.insert(__MODULE__, Enum.map(users, &to_ets/1))
+  end
+
+  def update(user = %User{}) do
+    if :ets.insert(__MODULE__, to_ets(user)) do
+      user
+    else
+      nil
+    end
+  end
+
   def find(username) do
     case :ets.lookup(__MODULE__, username) do
       [user] -> from_ets(user)
@@ -32,13 +44,14 @@ defmodule Impressionner.Storage.Users do
     end
   end
 
-  defp from_ets({username}) do
+  defp from_ets({username, state}) do
     %User{
-      username: username
+      username: username,
+      state: state
     }
   end
 
   defp to_ets(user = %User{}) do
-    {user.username}
+    {user.username, user.state}
   end
 end

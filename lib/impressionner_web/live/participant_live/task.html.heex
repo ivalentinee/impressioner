@@ -1,0 +1,28 @@
+<div>
+  <%= if @current_task do %>
+    <h2><%= @current_task.title %></h2>
+    <div class="row">
+      <div class="two columns">
+        <%= if @user.state == :ready do %>
+          <button class="button" disabled>Well done!</button>
+        <% else %>
+          <button class="button button-primary" phx-click="ready">Done</button>
+        <% end %>
+      </div>
+      <div class="five columns">
+        <p class="task-text"><%= @current_task.text %></p>
+      </div>
+      <div class="five columns">
+        <%= if @current_task.hint do %>
+          <%= if @hint_opened do %>
+            <p class="task-text task-hint"><%= @current_task.hint %></p>
+          <% else %>
+            <button phx-click="open_hint">Hint</button>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <h2>Just wait a little longer...</h2>
+  <% end %>
+</div>
