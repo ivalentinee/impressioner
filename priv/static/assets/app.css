@@ -17,3 +17,8 @@
 .user-not-ready {
   color: red;
 }
+
+.delete {
+  color: red;
+  cursor: pointer;
+}

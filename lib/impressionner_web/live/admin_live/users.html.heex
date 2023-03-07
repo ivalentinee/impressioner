@@ -3,6 +3,7 @@
     <tr>
       <th>Username</th>
       <th>State</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
         <% else %>
           <td class="user-not-ready">Not ready</td>
         <% end %>
+        <td><span class="delete" phx-click="delete_user" phx-value-username={user.username}>×</span></td>
       </tr>
     <% end %>
   </tbody>

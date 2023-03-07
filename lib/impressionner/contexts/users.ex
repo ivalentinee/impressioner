@@ -17,6 +17,17 @@ defmodule Impressionner.Contexts.Users do
     end
   end
 
+  def load_existing_user(username) when is_binary(username) do
+    UserStorage.find(username)
+  end
+
+  def delete(username) do
+    if existing_user = UserStorage.find(username) do
+      UserStorage.delete(username)
+      broadcast_event("delete")
+    end
+  end
+
   def reset_all_users do
     users = UserStorage.all()
 

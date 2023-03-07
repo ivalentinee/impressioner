@@ -37,6 +37,10 @@ defmodule Impressionner.Storage.Users do
     end
   end
 
+  def delete(username) do
+    :ets.delete(__MODULE__, username)
+  end
+
   def find(username) do
     case :ets.lookup(__MODULE__, username) do
       [user] -> from_ets(user)

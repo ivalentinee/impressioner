@@ -14,6 +14,7 @@ defmodule ImpressionnerWeb.ParticipantLive do
 
   def mount(_params, session, socket) do
     Tasks.subscribe()
+    Users.subscribe()
     current_task = Tasks.current()
 
     socket_with_assigs =
@@ -46,10 +47,20 @@ defmodule ImpressionnerWeb.ParticipantLive do
     {:noreply, assign(socket, :user, user)}
   end
 
+  def handle_info(%{topic: "users"}, socket) do
+    user = Users.load_existing_user(socket.assigns.user.username)
+
+    if (socket.assigns.user && is_nil(user)) do
+      {:noreply, push_navigate(socket, to: "/")}
+    else
+      {:noreply, socket}
+    end
+  end
+
   def handle_info(%{topic: "tasks"}, socket) do
     if socket.assigns.user do
       current_task = Tasks.current()
-      user = Users.load_user(socket.assigns.user.username)
+      user = Users.load_existing_user(socket.assigns.user.username)
 
       updated_socket =
         socket

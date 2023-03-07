@@ -30,6 +30,11 @@ defmodule ImpressionnerWeb.AdminLive do
     {:noreply, socket}
   end
 
+  def handle_event("delete_user", %{"username" => username}, socket) do
+    Impressionner.Contexts.Users.delete(username)
+    {:noreply, socket}
+  end
+
   def handle_info(%{topic: "users"}, socket) do
     updated_users = Users.all()
     {:noreply, assign(socket, :users, updated_users)}
