@@ -1,5 +1,7 @@
 <h1>Admin</h1>
 
+<ImpressionnerWeb.AdminLive.Tasks.render sections={@sections} current_task={@current_task} />
+
 <%= for user <- @users do %>
   <span><%= user.username %></span>
 <% end %>

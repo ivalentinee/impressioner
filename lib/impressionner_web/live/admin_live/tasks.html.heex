@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="two columns">
+    <%= if @current_task === nil do %>
+      <button phx-click="start">Start</button>
+    <% else %>
+      <button phx-click="next">Next</button>
+    <% end %>
+  </div>
+  <div class="five columns">
+    <ol>
+      <%= for section <- @sections do %>
+        <li>
+          <%= if is_current_section(section, @current_task) do %>
+            <span class="selected-task"><%= section.name %></span>
+          <% else %>
+            <span><%= section.name %></span>
+          <% end %>
+
+          <br />
+
+          <ol>
+            <%= for task <- section.tasks do %>
+              <%= if is_current_task(section, task, @current_task) do %>
+                <li class="selected-task"><%= task.title %> (<%= task.name %>)</li>
+              <% else %>
+                <li><%= task.title %> (<%= task.name %>)</li>
+              <% end %>
+
+            <% end %>
+          </ol>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+</div>

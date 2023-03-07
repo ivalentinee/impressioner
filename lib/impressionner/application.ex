@@ -11,7 +11,8 @@ defmodule Impressionner.Application do
       ImpressionnerWeb.Telemetry,
       {Phoenix.PubSub, name: Impressionner.PubSub},
       ImpressionnerWeb.Endpoint,
-      Impressionner.Storage.Users
+      Impressionner.Storage.Users,
+      Impressionner.Storage.Tasks
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
