@@ -59,6 +59,20 @@ defmodule ImpressionnerWeb do
     end
   end
 
+  def live_view do
+    quote do
+      use Phoenix.LiveView
+      use ImpressionnerWeb, :html
+    end
+  end
+
+  def live_component do
+    quote do
+      use Phoenix.LiveComponent
+      use ImpressionnerWeb, :html
+    end
+  end
+
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,

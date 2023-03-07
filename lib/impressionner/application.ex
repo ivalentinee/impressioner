@@ -8,14 +8,10 @@ defmodule Impressionner.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Start the Telemetry supervisor
       ImpressionnerWeb.Telemetry,
-      # Start the PubSub system
       {Phoenix.PubSub, name: Impressionner.PubSub},
-      # Start the Endpoint (http/https)
-      ImpressionnerWeb.Endpoint
-      # Start a worker by calling: Impressionner.Worker.start_link(arg)
-      # {Impressionner.Worker, arg}
+      ImpressionnerWeb.Endpoint,
+      Impressionner.Storage.Users
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
