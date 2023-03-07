@@ -6,6 +6,6 @@ defmodule ImpressionnerWeb.AdminLive.Tasks do
   end
 
   def is_current_task(section, task, current_task) do
-    is_current_section(section, current_task) && task.name == current_task.task
+    is_current_section(section, current_task) && task.name == current_task.name
   end
 end

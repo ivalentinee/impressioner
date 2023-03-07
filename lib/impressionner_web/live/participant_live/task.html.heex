@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <%= if @current_task do %>
     <h2><%= @current_task.title %></h2>
     <div class="row">
@@ -22,6 +22,15 @@
         <% end %>
       </div>
     </div>
+
+    <%= if @user.state == :ready && @current_task.result do %>
+      <h5 class="result">Result</h5>
+      <div class="row"><div class="two columns"></div></div>
+      <div class="five columns">
+        <p class="task-text"><%= @current_task.result %></p>
+      </div>
+    <% end %>
+
   <% else %>
     <h2>Just wait a little longer...</h2>
   <% end %>

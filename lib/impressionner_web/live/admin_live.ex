@@ -6,7 +6,8 @@ defmodule ImpressionnerWeb.AdminLive do
 
   def mount(_params, _session, socket) do
     users = Users.all()
-    %{ sections: sections, current_task: current_task } = Tasks.all()
+    sections = Tasks.all()
+    current_task = Tasks.current()
 
     Users.subscribe()
     Tasks.subscribe()
@@ -41,7 +42,7 @@ defmodule ImpressionnerWeb.AdminLive do
   end
 
   def handle_info(%{topic: "tasks"}, socket) do
-    %{ current_task: current_task } = Tasks.all()
+    current_task = Tasks.current()
     {:noreply, assign(socket, :current_task, current_task)}
   end
 end

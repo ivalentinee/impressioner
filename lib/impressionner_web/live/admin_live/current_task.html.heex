@@ -1,0 +1,14 @@
+<div>
+  <%= if @current_task !== nil do %>
+    <h5><%= @current_task.title %></h5>
+    <p class="task-text admin-text"><%= @current_task.text %></p>
+    <%= if @current_task.hint do %>
+      <p class="task-text task-hint"><%= @current_task.hint %></p>
+    <% end %>
+    <%= if @current_task.result do %>
+      <p class="task-text admin-result"><%= @current_task.result %></p>
+    <% end %>
+  <% else %>
+    <h5>Please wait a little longer...</h5>
+  <% end %>
+</div>

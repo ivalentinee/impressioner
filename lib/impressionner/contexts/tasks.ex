@@ -3,7 +3,8 @@ defmodule Impressionner.Contexts.Tasks do
   alias Impressionner.Contexts.Users
 
   def all do
-    TaskStorage.get()
+    %{ sections: sections } = TaskStorage.get()
+    sections
   end
 
   def current do
@@ -12,6 +13,8 @@ defmodule Impressionner.Contexts.Tasks do
     if current_task do
       section = Enum.find(sections, &(&1.name == current_task.section))
       Enum.find(section.tasks, &(&1.name == current_task.task))
+    else
+      nil
     end
   end
 

@@ -22,3 +22,28 @@
   color: red;
   cursor: pointer;
 }
+
+.result {
+  margin-top: 20px;
+}
+
+.admin-header {
+  display: flex;
+}
+
+.admin-header > * {
+  margin-right: 15px;
+}
+
+.container-fixed {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.admin-text {
+  color: red;
+}
+
+.admin-result {
+  color: blue;
+}

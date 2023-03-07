@@ -32,7 +32,8 @@ defmodule Impressionner.Contexts.Tasks.Reader do
       section: section,
       title: document["title"],
       text: document["text"],
-      hint: document["hint"]
+      hint: document["hint"],
+      result: document["result"]
     }
   end
 
