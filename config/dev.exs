@@ -1,29 +1,16 @@
-use Mix.Config
+import Config
 
-config :impressioner, ImpressionerWeb.Endpoint,
-  http: [port: 4000],
-  debug_errors: true,
-  code_reloader: true,
+config :impressionner, ImpressionnerWeb.Endpoint,
+  http: [ip: {0, 0, 0, 0}, port: 4000],
   check_origin: false,
+  code_reloader: true,
+  debug_errors: true,
+  secret_key_base: "wlASwy/J9xidz4dzS2aF8fZ27Pe64bEB4ZtRU8T3zMlMxwlf8RTS+461/NCDAXnt",
   watchers: [
-    node: [
-      "node_modules/webpack/bin/webpack.js",
-      "--mode",
-      "development",
-      "--watch-stdin",
-      cd: Path.expand("../frontend", __DIR__)
-    ]
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
   ]
 
-config :impressioner, ImpressionerWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/impressioner_web/{live,views}/.*(ex)$",
-      ~r"lib/impressioner_web/templates/.*(eex)$"
-    ]
-  ]
+config :impressionner, dev_routes: true
 
 config :logger, :console, format: "[$level] $message\n"
 

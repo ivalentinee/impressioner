@@ -1,4 +1,4 @@
-defmodule ImpressionerWeb.ConnCase do
+defmodule ImpressionnerWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,20 +11,23 @@ defmodule ImpressionerWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use ImpressionerWeb.ConnCase, async: true`, although
-  this option is not recommendded for other databases.
+  by setting `use ImpressionnerWeb.ConnCase, async: true`, although
+  this option is not recommended for other databases.
   """
 
   use ExUnit.CaseTemplate
 
   using do
     quote do
-      # Import conveniences for testing with connections
-      use Phoenix.ConnTest
-      alias ImpressionerWeb.Router.Helpers, as: Routes
-
       # The default endpoint for testing
-      @endpoint ImpressionerWeb.Endpoint
+      @endpoint ImpressionnerWeb.Endpoint
+
+      use ImpressionnerWeb, :verified_routes
+
+      # Import conveniences for testing with connections
+      import Plug.Conn
+      import Phoenix.ConnTest
+      import ImpressionnerWeb.ConnCase
     end
   end
 

@@ -2,7 +2,9 @@ version: "3"
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      target: dev
     image: impressioner/web
     ports:
       - "4000:4000"
@@ -13,10 +15,4 @@ services:
       MIX_ENV: null
       NODE_ENV: development
       POSTGRESQL_HOST: db
-
-  webpack:
-    build: .
-    image: impressioner/web
-    volumes: *web-volumes
-    command: npm run watch
-    environment: *web-environment
+    user: '1000:1000'

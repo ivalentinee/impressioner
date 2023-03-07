@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Impressionner</title>
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <script defer phx-track-static type="text/javascript" src="/assets/app.js"></script>
+  </head>
+
+  <body>
+    <h1>Impressionner</h1>
+    <%= @inner_content %>
+  </body>
+</html>

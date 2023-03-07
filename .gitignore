@@ -1,12 +1,10 @@
-# App artifacts
-/_build
-/deps
-/*.ez
+/_build/
+/cover/
+/deps/
+/doc/
+/.fetch
 erl_crash.dump
-/priv/static/
-
-# Frontend
-/frontend/yarn-error.log
-/frontend/node_modules
-/frontend/npm-debug.log
-/frontend/package-lock.json
+*.ez
+/tmp/
+/priv/static
+impressionner-*.tar

@@ -1,22 +1,9 @@
-# App artifacts
-_build
-db
-deps
-*.ez
-
-# Generated on crash by the VM
+/_build/
+/cover/
+/deps/
+/doc/
+/.fetch
 erl_crash.dump
-
-# Static artifacts
-yarn-error.log
-node_modules
-npm-debug.log
-jest*
-
-# Since we are building assets from web/static,
-# we ignore priv/static. You may want to comment
-# this depending on your deployment strategy.
-priv/static/
-
-# Ignore .git folder
-.git
+*.ez
+/tmp/
+impressionner-*.tar

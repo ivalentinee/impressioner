@@ -2,9 +2,8 @@ services:
   - docker
 
 install:
-  - docker build -t impressioner .
+  - docker build -t impressioner --target test .
 
 script:
   - docker run -e "MIX_ENV=test" --rm -it impressioner mix test
   - docker run -e "MIX_ENV=test" --rm -it impressioner mix format --check-formatted
-  - docker run -e "NODE_ENV=development" --rm -it impressioner bash -c "yarn && yarn run eslint"
