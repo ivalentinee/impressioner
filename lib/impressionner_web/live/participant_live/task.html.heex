@@ -15,7 +15,7 @@
       <div class="five columns">
         <%= if @current_task.hint do %>
           <%= if @hint_opened do %>
-            <p class="task-text task-hint"><%= @current_task.hint %></p>
+            <pre class="task-text task-hint"><%= @current_task.hint %></pre>
           <% else %>
             <button phx-click="open_hint">Hint</button>
           <% end %>
