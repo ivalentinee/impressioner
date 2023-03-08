@@ -1,17 +1,10 @@
 <div class="row container-fixed">
   <div class="four columns">
-    <div class="admin-header">
-      <h5>Admin</h5>
-      <%= if @current_task === nil do %>
-        <button phx-click="start">Start</button>
-      <% else %>
-        <button phx-click="next">Next</button>
-      <% end %>
-    </div>
     <ImpressionnerWeb.AdminLive.Tasks.render sections={@sections} current_task={@current_task} />
   </div>
 
   <div class="four columns">
+    <ImpressionnerWeb.AdminLive.Buttons.render current_task={@current_task} />
     <ImpressionnerWeb.AdminLive.CurrentTask.render current_task={@current_task} />
   </div>
 

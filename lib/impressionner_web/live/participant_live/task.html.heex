@@ -1,6 +1,9 @@
 <div class="container">
   <%= if @current_task do %>
-    <h2><%= @current_task.title %></h2>
+    <div class="participant-header">
+      <h4><%= @current_task.title %></h4>
+      <h4><%= @user.username %></h4>
+    </div>
     <div class="row">
       <div class="two columns">
         <%= if @user.state == :ready do %>
@@ -26,8 +29,8 @@
     <%= if @user.state == :ready && @current_task.result do %>
       <h5 class="result">Result</h5>
       <div class="row"><div class="two columns"></div></div>
-      <div class="five columns">
-        <p class="task-text"><%= @current_task.result %></p>
+      <div class="twelve columns">
+        <pre class="task-text"><%= @current_task.result %></pre>
       </div>
     <% end %>
 

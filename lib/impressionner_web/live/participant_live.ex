@@ -8,11 +8,11 @@ defmodule ImpressionnerWeb.ParticipantLive do
     if assigns[:user] do
       ImpressionnerWeb.ParticipantLive.Task.render(assigns)
     else
-      ~H"<%= live_component(@socket, ImpressionnerWeb.ParticipantLive.LoginForm, id: :login_form) %>"
+      ~H"<%= live_component(ImpressionnerWeb.ParticipantLive.LoginForm, id: :login_form) %>"
     end
   end
 
-  def mount(_params, session, socket) do
+  def mount(_params, _session, socket) do
     Tasks.subscribe()
     Users.subscribe()
     current_task = Tasks.current()
@@ -22,7 +22,7 @@ defmodule ImpressionnerWeb.ParticipantLive do
       |> assign(:current_task, current_task)
       |> assign(:hint_opened, false)
 
-      {:ok, socket_with_assigs}
+    {:ok, socket_with_assigs}
   end
 
   def handle_event("ready", _params, socket) do
@@ -35,7 +35,7 @@ defmodule ImpressionnerWeb.ParticipantLive do
   end
 
   def handle_event("open_hint", _params, socket) do
-    if socket.assigns.user do
+    if socket.assigns[:user] do
       {:noreply, assign(socket, :hint_opened, true)}
     else
       {:noreply, socket}
@@ -48,29 +48,27 @@ defmodule ImpressionnerWeb.ParticipantLive do
   end
 
   def handle_info(%{topic: "users"}, socket) do
-    user = Users.load_existing_user(socket.assigns.user.username)
+    if socket.assigns[:user] do
+      user = Users.load_existing_user(socket.assigns.user.username)
 
-    if (socket.assigns.user && is_nil(user)) do
-      {:noreply, push_navigate(socket, to: "/")}
+      if is_nil(user) do
+        {:noreply, push_navigate(socket, to: "/")}
+      else
+        {:noreply, assign(socket, :user, user)}
+      end
     else
       {:noreply, socket}
     end
   end
 
   def handle_info(%{topic: "tasks"}, socket) do
-    if socket.assigns.user do
-      current_task = Tasks.current()
-      user = Users.load_existing_user(socket.assigns.user.username)
+    current_task = Tasks.current()
 
-      updated_socket =
-        socket
-        |> assign(:current_task, current_task)
-        |> assign(:user, user)
-        |> assign(:hint_opened, false)
+    updated_socket =
+      socket
+      |> assign(:current_task, current_task)
+      |> assign(:hint_opened, false)
 
-      {:noreply, updated_socket}
-    else
-      {:noreply, socket}
-    end
+    {:noreply, updated_socket}
   end
 end

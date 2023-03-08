@@ -7,7 +7,7 @@
       <pre class="task-text task-hint"><%= @current_task.hint %></pre>
     <% end %>
     <%= if @current_task.result do %>
-      <p class="task-text admin-result"><%= @current_task.result %></p>
+      <pre class="task-text admin-result"><%= @current_task.result %></pre>
     <% end %>
   <% else %>
     <h5>Please wait a little longer...</h5>

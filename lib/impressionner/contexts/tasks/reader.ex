@@ -41,7 +41,7 @@ defmodule Impressionner.Contexts.Tasks.Reader do
   defp group_by_section(tasks) do
     section_names =
       tasks
-      |> Enum.map(&(&1.section))
+      |> Enum.map(& &1.section)
       |> Enum.uniq()
       |> Enum.sort()
 

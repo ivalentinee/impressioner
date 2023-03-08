@@ -1,0 +1,8 @@
+<div class="admin-header">
+  <h5>Admin</h5>
+  <%= if @current_task === nil do %>
+    <button phx-click="start">Start</button>
+  <% else %>
+    <button phx-click="next">Next</button>
+  <% end %>
+</div>
